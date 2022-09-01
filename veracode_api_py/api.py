@@ -222,8 +222,8 @@ class VeracodeAPI:
     def disable_user(self, user_guid: UUID):
         return Users().disable(user_guid)
 
-    def delete_user(self, user_guid: UUID):
-        return Users().delete(user_guid)
+    def delete_user(self, user_guid: UUID, hard_delete=False):
+        return Users().delete(user_guid, hard_delete)
 
     def get_teams(self, all_for_org=False):
         return Teams().get_all(all_for_org)

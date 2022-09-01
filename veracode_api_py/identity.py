@@ -134,9 +134,10 @@ class Users():
       payload = json.dumps({'active': False})
       return APIHelper()._rest_request(uri,"PUT",request_params,payload)
 
-   def delete(self,user_guid: UUID):
+   def delete(self,user_guid: UUID, hard_delete=False):
+      request_params = {'hard_delete': hard_delete}
       uri = self.USER_URI + '/{}'.format(user_guid)
-      return APIHelper()._rest_request(uri,"DELETE")
+      return APIHelper()._rest_request(uri,"DELETE",request_params)
 
 class Teams():
    def get_all(self, all_for_org=False):
